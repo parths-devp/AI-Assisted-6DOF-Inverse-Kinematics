@@ -1,0 +1,52 @@
+clear; clc;
+load("ik_dataset_branchaware_prepared.mat");
+load("ik_branchaware_network.mat");
+robot=importrobot("../robot/base_fixed.urdf");
+robot.DataFormat="struct";
+ik=inverseKinematics("RigidBodyTree",robot);
+weights=[1 1 1 1 1 1];
+NTest=500;
+XSample=XTest(1:NTest,:);
+XSampleNorm=XTestNorm(1:NTest,:);
+tHome=0;
+tAI=0;
+tIK=0;
+errHome=zeros(NTest,1);
+errHybrid=zeros(NTest,1);
+YPredNorm=predict(net,XSampleNorm);
+YPred=double(YPredNorm.*YStd+YMean);
+YPred=max(YPred,-pi+1e-5);
+YPred=min(YPred,pi-1e-5);
+for i=1:NTest
+    targetPosition=XSample(i,1:3);
+    targetPose=trvec2tform(targetPosition)*quat2tform(XSample(i,4:7));
+    q0=homeConfiguration(robot);
+    tic;
+    [homeSol,~]=ik("jaw6_1",targetPose,weights,q0);
+    tHome=tHome+toc;
+    T=getTransform(robot,homeSol,"jaw6_1",robot.BaseName);
+    errHome(i)=norm(tform2trvec(T)-targetPosition);
+    aiConfig=homeConfiguration(robot);
+    for j=1:6
+        aiConfig(j).JointPosition=YPred(i,j);
+    end
+    tic;
+    [refined,~]=ik("jaw6_1",targetPose,weights,aiConfig);
+    tIK=tIK+toc;
+    T=getTransform(robot,refined,"jaw6_1",robot.BaseName);
+    errHybrid(i)=norm(tform2trvec(T)-targetPosition);
+end
+tAIstart=tic;
+predict(net,XSampleNorm);
+tAI=toc(tAIstart);
+hybridTotal=tAI+tIK;
+fprintf("MATLAB IK total: %.4f s\n",tHome);
+fprintf("MATLAB IK average: %.4f ms\n",tHome/NTest*1000);
+fprintf("AI prediction total: %.4f s\n",tAI);
+fprintf("AI prediction average: %.4f ms\n",tAI/NTest*1000);
+fprintf("Hybrid IK total: %.4f s\n",hybridTotal);
+fprintf("Hybrid average: %.4f ms\n",hybridTotal/NTest*1000);
+fprintf("Speedup: %.2fx\n",tHome/hybridTotal);
+fprintf("Home IK mean error: %.4f mm\n",mean(errHome)*1000);
+fprintf("Hybrid mean error: %.4f mm\n",mean(errHybrid)*1000);
+save("runtime_comparison.mat","tHome","tAI","tIK","hybridTotal","errHome","errHybrid");
