@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="base">
+
+<link name="Base_1">
+   <inertial>
+      <origin xyz="0.0 0.0 0.03877371934347955" rpy="0.0 0.0 0.0" />
+      <mass value="45.923305188609305" />
+      <inertia ixx="0.2924735261" iyy="0.29247354000000003" izz="0.5346739035" ixy="-0.0" iyz="0.0" ixz="0.0" />
+   </inertial>
+
+   <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/Base_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Paint_EnamelGlossy{Yellow}" />
+   </visual>
+
+   <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/Base_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+   </collision>
+</link>
+
+
+<link name="jawpart1_1">
+   <inertial>
+      <origin xyz="-0.061045989735830225 -0.004510856852106202 0.08612518264463984" rpy="0.0 0.0 0.0" />
+      <mass value="18.997139305504977" />
+      <inertia ixx="0.10001608730000001" iyy="0.1987305116" izz="0.1357701294" ixy="-0.0064714123999999994" iyz="0.005577183" ixz="0.0764854976" />
+   </inertial>
+
+   <visual>
+      <origin xyz="0.0 0.0 -0.084" rpy="0.0 0.0 0.0" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jawpart1_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Steel_Satin" />
+   </visual>
+
+   <collision>
+      <origin xyz="0.0 0.0 -0.084" rpy="0.0 0.0 0.0" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jawpart1_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+   </collision>
+</link>
+
+
+<link name="jaw2_1">
+   <inertial>
+      <origin xyz="-0.13988412112012036 -0.007878961922960422 0.035291801029661056" rpy="1.5707963267948966 0.0 -1.5707963267948966" />
+      <mass value="7.133264565811199" />
+      <inertia ixx="0.13679235900000003" iyy="0.13934607610000002" izz="0.0047003018" ixy="0.00023212810000000002" iyz="0.000606594" ixz="-0.0012939139000000004" />
+   </inertial>
+
+   <visual>
+      <origin xyz="0.24400000000000002 -0.15 0.0" rpy="1.5707963267948966 0.0 -1.5707963267948966" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw2_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Paint_EnamelGlossy{Yellow}" />
+   </visual>
+
+   <collision>
+      <origin xyz="0.24400000000000002 -0.15 0.0" rpy="1.5707963267948966 0.0 -1.5707963267948966" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw2_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+   </collision>
+</link>
+
+
+<link name="jaw3_1">
+   <inertial>
+      <origin xyz="-0.04597400237560361 -0.040232299669399084 0.04471068868323069" rpy="3.141592653589793 1.4835298641951802 1.5707963267948966" />
+      <mass value="11.177273355242543" />
+      <inertia ixx="0.0144514996" iyy="0.065756346" izz="0.0632188417" ixy="-0.0011145167" iyz="0.001126561" ixz="-0.0018833977000000002" />
+   </inertial>
+
+   <visual>
+      <origin xyz="-0.02 0.6048130120786515 -0.09765869352165508" rpy="3.141592653589793 1.4835298641951802 1.5707963267948966" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw3_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Steel_Satin" />
+   </visual>
+
+   <collision>
+      <origin xyz="-0.02 0.6048130120786515 -0.09765869352165508" rpy="3.141592653589793 1.4835298641951802 1.5707963267948966" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw3_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+   </collision>
+</link>
+
+
+<link name="jaw4_1">
+   <inertial>
+      <origin xyz="-0.11391719953059565 -7.18447364870034e-06 -3.266957522683356e-05" rpy="-3.141592653589793 -0.0872664625997166 0.0" />
+      <mass value="5.311335617555382" />
+      <inertia ixx="0.0051291361999999995" iyy="0.023747763100000003" izz="0.0252794385" ixy="4.3672e-06" iyz="3.396e-07" ixz="-0.0017672775000000002" />
+   </inertial>
+
+   <visual>
+      <origin xyz="0.32365869352165516 -0.028 0.649813012078651" rpy="-3.141592653589793 -0.0872664625997166 0.0" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw4_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Steel_Satin" />
+   </visual>
+
+   <collision>
+      <origin xyz="0.32365869352165516 -0.028 0.649813012078651" rpy="-3.141592653589793 -0.0872664625997166 0.0" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw4_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+   </collision>
+</link>
+
+
+<link name="jaw5_1">
+   <inertial>
+      <origin xyz="-0.021844097871787316 0.05946986667704454 0.0" rpy="-3.141592653589793 -0.9599310885968815 -1.5707963267948966" />
+      <mass value="2.6891585266417475" />
+      <inertia ixx="0.002547817" iyy="0.0028608269" izz="0.0022499737" ixy="1.4300700000000002e-05" iyz="2.0423500000000002e-05" ixz="-0.00040915890000000005" />
+   </inertial>
+
+   <visual>
+      <origin xyz="-0.0505 0.1701018707063957 0.808307623875101" rpy="-3.141592653589793 -0.9599310885968815 -1.5707963267948966" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw5_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Steel_Satin" />
+   </visual>
+
+   <collision>
+      <origin xyz="-0.0505 0.1701018707063957 0.808307623875101" rpy="-3.141592653589793 -0.9599310885968815 -1.5707963267948966" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw5_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+   </collision>
+</link>
+
+
+<link name="jaw6_1">
+   <inertial>
+      <origin xyz="0.016350491438919743 0.0 0.0" rpy="0.0 0.959931088596881 -3.141592653589793" />
+      <mass value="0.6003629027216969" />
+      <inertia ixx="0.0003053915" iyy="0.0002527471" izz="0.0003104027" ixy="0.0" iyz="0.0" ixz="6.8841e-06" />
+   </inertial>
+
+   <visual>
+      <origin xyz="0.07510187039347108 -0.0285 -0.8083076238751005" rpy="0.0 0.959931088596881 -3.141592653589793" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw6_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Steel_Satin" />
+   </visual>
+
+   <collision>
+      <origin xyz="0.07510187039347108 -0.0285 -0.8083076238751005" rpy="0.0 0.959931088596881 -3.141592653589793" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/jaw6_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+   </collision>
+</link>
+
+
+<link name="finger1_1">
+   <inertial>
+      <origin xyz="-0.025451787489380637 0.04792847075167002 -0.009000000000000001" rpy="0.0 0.959931088596881 -1.2217304763959853" />
+      <mass value="0.29096248781154904" />
+      <inertia ixx="0.0002816884" iyy="0.00040939920000000003" izz="0.0001470395" ixy="6.218900000000001e-06" iyz="8.881500000000001e-06" ixz="-0.0001849725" />
+   </inertial>
+
+   <visual>
+      <origin xyz="-0.02600376336680526 0.03545414844033102 -0.8173076238751003" rpy="0.0 0.959931088596881 -1.2217304763959853" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/finger1_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Paint_EnamelGlossy{Yellow}" />
+   </visual>
+
+   <collision>
+      <origin xyz="-0.02600376336680526 0.03545414844033102 -0.8173076238751003" rpy="0.0 0.959931088596881 -1.2217304763959853" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/finger1_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+   </collision>
+</link>
+
+
+<link name="finger2_1">
+   <inertial>
+      <origin xyz="-0.025451787489380626 0.04792847075167011 -0.009000000000000001" rpy="-3.141592653589793 -0.9599310885968814 -1.3089969389957923" />
+      <mass value="0.29096248781154904" />
+      <inertia ixx="0.00028204840000000005" iyy="0.00040830520000000004" izz="0.0001477736" ixy="1.3391200000000001e-05" iyz="1.91246e-05" ixz="-0.0001844585" />
+   </inertial>
+
+   <visual>
+      <origin xyz="-0.0778725506541384 0.022832926441234493 0.799307623875101" rpy="-3.141592653589793 -0.9599310885968814 -1.3089969389957923" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/finger2_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="Paint_EnamelGlossy{Yellow}" />
+   </visual>
+
+   <collision>
+      <origin xyz="-0.0778725506541384 0.022832926441234493 0.799307623875101" rpy="-3.141592653589793 -0.9599310885968814 -1.3089969389957923" />
+      <geometry>
+         <mesh filename="C:/academics/bumblebee/base_description/meshes/finger2_1.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+   </collision>
+</link>
+
+
+<joint name="Revolute6" type="revolute">
+   <origin xyz="0.0 0.0 0.084" rpy="0.0 0.0 0.0" />
+   <parent link="Base_1" />
+   <child link="jawpart1_1" />
+   <axis xyz="0.0 0.0 -1.0" />
+   <limit upper="3.141592653589793" lower="-3.141592653589793" effort="100.0" velocity="100.0" />
+</joint>
+
+<joint name="Revolute7" type="revolute">
+   <origin xyz="-0.15 0.0 0.16" rpy="0.0 1.5707963267948966 1.5707963267948966" />
+   <parent link="jawpart1_1" />
+   <child link="jaw2_1" />
+   <axis xyz="0.0 0.0 -1.0" />
+   <limit upper="3.141592653589793" lower="-3.141592653589793" effort="100.0" velocity="100.0" />
+</joint>
+
+<joint name="Revolute8" type="revolute">
+   <origin xyz="-0.35000000000000003 0.0 0.02" rpy="0.0 -1.5707963267948966 -1.658062789394613" />
+   <parent link="jaw2_1" />
+   <child link="jaw3_1" />
+   <axis xyz="1.0 0.0 0.0" />
+   <limit upper="3.141592653589793" lower="-3.141592653589793" effort="100.0" velocity="100.0" />
+</joint>
+
+<joint name="Revolute9" type="revolute">
+   <origin xyz="-0.048 -0.045000000000000005 0.226" rpy="0.0 1.5707963267948966 1.5707963267948966" />
+   <parent link="jaw3_1" />
+   <child link="jaw4_1" />
+   <axis xyz="-1.0 0.0 0.0" />
+   <limit upper="3.141592653589793" lower="-3.141592653589793" effort="100.0" velocity="100.0" />
+</joint>
+
+<joint name="Revolute10" type="revolute">
+   <origin xyz="-0.18620149520399865 0.022500000000000003 -6.270618220824531e-05" rpy="0.8726646259971645 0.0 1.5707963267948966" />
+   <parent link="jaw4_1" />
+   <child link="jaw5_1" />
+   <axis xyz="-1.0 0.0 0.0" />
+   <limit upper="3.141592653589793" lower="-3.141592653589793" effort="100.0" velocity="100.0" />
+</joint>
+
+<joint name="Revolute11" type="revolute">
+   <origin xyz="-0.022000000000000002 0.09500000031292441 0.0" rpy="3.141592653589793 0.0 1.5707963267948966" />
+   <parent link="jaw5_1" />
+   <child link="jaw6_1" />
+   <axis xyz="-1.0 0.0 0.0" />
+   <limit upper="3.141592653589793" lower="-3.141592653589793" effort="100.0" velocity="100.0" />
+</joint>
+
+<joint name="Revolute14" type="revolute">
+   <origin xyz="0.03289205785412248 -0.040809511617408936 0.009000000000000001" rpy="0.0 0.0 -1.919862177193762" />
+   <parent link="jaw6_1" />
+   <child link="finger1_1" />
+   <axis xyz="0.0 0.0 -1.0" />
+   <limit upper="1.5707963267948966" lower="0.0" effort="100.0" velocity="100.0" />
+</joint>
+
+<joint name="Revolute15" type="revolute">
+   <origin xyz="0.03289205785412234 0.040809511617408964 -0.009000000000000001" rpy="-3.141592653589793 0.0 1.8325957145940461" />
+   <parent link="jaw6_1" />
+   <child link="finger2_1" />
+   <axis xyz="0.0 0.0 -1.0" />
+   <limit upper="1.5707963267948966" lower="0.0" effort="100.0" velocity="100.0" />
+</joint>
+
+</robot>
