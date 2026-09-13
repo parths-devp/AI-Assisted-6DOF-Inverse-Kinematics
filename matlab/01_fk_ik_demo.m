@@ -1,0 +1,18 @@
+clear; clc; close all;
+robot = importrobot("../robot/base_fixed.urdf");
+robot.DataFormat = "struct";
+ik = inverseKinematics("RigidBodyTree",robot);
+weights = [1 1 1 1 1 1];
+config = homeConfiguration(robot);
+T = getTransform(robot,config,"jaw6_1",robot.BaseName);
+disp(tform2trvec(T));
+disp(tform2eul(T));
+targetPosition = [-0.50 0.00 0.60];
+targetOrientation = eul2tform([pi 0.9599 0]);
+targetPose = trvec2tform(targetPosition)*targetOrientation;
+[configSol,solInfo] = ik("jaw6_1",targetPose,weights,config);
+Tcheck = getTransform(robot,configSol,"jaw6_1",robot.BaseName);
+disp(tform2trvec(Tcheck));
+show(robot,configSol);
+axis equal;
+view(3);
