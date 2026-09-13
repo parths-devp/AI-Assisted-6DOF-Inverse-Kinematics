@@ -2,7 +2,7 @@
 
 A MATLAB simulation project for a 6-DOF articulated robot designed in Fusion 360 and exported to URDF.
 
-The final system uses a hybrid AI-assisted IK pipeline: a neural network predicts a configuration-dependent initial joint-angle guess, and MATLAB numerical inverse kinematics refines that guess to reach the requested end-effector pose.
+The final system uses a hybrid AI-assisted IK pipeline: a branch-aware neural network predicts a configuration-dependent initial joint-angle guess, and MATLAB numerical inverse kinematics refines that guess to reach the requested end-effector pose.
 
 ## Pipeline
 
@@ -20,13 +20,15 @@ Desired pose + previous joint configuration
                 Robot
 ```
 
-The project is intentionally described as **AI-assisted/hybrid IK**, rather than standalone AI IK, because the numerical IK solver performs the final refinement.
+The project is intentionally described as AI-assisted/hybrid IK rather than standalone AI IK because the numerical IK solver performs the final refinement.
 
 ## Robot model
 
 The Fusion 360 assembly contains a serial 6-DOF arm plus two gripper-finger joints. The first six revolute joints form the arm: Revolute6 through Revolute11. The gripper fingers use Revolute14 and Revolute15.
 
 MATLAB uses `Base_1` as the base frame and `jaw6_1` as the end-effector frame.
+
+The URDF and all nine STL meshes required by the model are included under `robot/`.
 
 ## Why branch-aware IK?
 
@@ -52,7 +54,7 @@ The previous joint configuration provides information about the current IK branc
 
 Dataset split: 35,000 training, 7,500 validation, and 7,500 test samples. Inputs and outputs are standardized using statistics computed only from the training set.
 
-Large `.mat` datasets and trained network files are kept out of the initial repository to avoid unnecessarily large Git history. They can be generated locally from the MATLAB workflow.
+The generated `.mat` datasets are excluded from GitHub to avoid unnecessary repository size. They can be regenerated using the MATLAB scripts.
 
 ## Neural network
 
@@ -63,6 +65,8 @@ Final architecture:
 ```
 
 ReLU activations are used between the fully connected layers. Training uses Adam with a learning rate of `0.001`, mini-batch size `256`, and up to `100` epochs.
+
+The trained `.mat` network file is also excluded from GitHub because it can be regenerated from the included training workflow.
 
 ## Final demonstration
 
@@ -81,11 +85,11 @@ Final simulated results:
 
 These values are from the MATLAB robot model and FK/IK simulation; they are not measurements of a physical robot.
 
-For comparison, the AI-only prediction on the square trajectory had a mean Cartesian error of about 369 mm. The numerical IK refinement is essential for the final accuracy.
+For comparison, AI-only prediction on the square trajectory had a mean Cartesian error of about 369 mm. Numerical IK refinement is essential for the final accuracy.
 
 ## Runtime
 
-In a 500-sample comparison, MATLAB IK from a home configuration averaged about 10.0 ms/sample, while AI-initialized numerical IK averaged about 9.0 ms/sample overall (about 1.11× speedup). The speed improvement is modest; the main role of the network is to provide a configuration-dependent initial guess and help select a consistent IK branch.
+In a 500-sample comparison, MATLAB IK from a home configuration averaged about 10.0 ms/sample, while AI-initialized numerical IK averaged about 9.0 ms/sample overall, giving about a 1.11× speedup. The speed improvement is modest; the main role of the network is to provide a configuration-dependent initial guess and help select a consistent IK branch.
 
 ## Requirements
 
@@ -101,17 +105,29 @@ AI-Assisted-6DOF-Inverse-Kinematics/
 ├── requirements.md
 ├── .gitignore
 ├── matlab/
-│   └── final_square_demo.m
-├── robot/
-│   ├── base_fixed.urdf
-│   └── meshes/
-├── dataset/
-└── results/
+│   ├── 01_fk_ik_demo.m
+│   ├── 02_generate_branchaware_dataset.m
+│   ├── 03_prepare_branchaware_dataset.m
+│   ├── 04_train_branchaware_network.m
+│   ├── 05_evaluate_ai_only.m
+│   ├── 06_evaluate_hybrid_ik.m
+│   ├── 07_runtime_comparison.m
+│   ├── 08_straight_line_trajectory.m
+│   ├── 09_square_trajectory.m
+│   └── 10_final_square_demo.m
+└── robot/
+    ├── base_fixed.urdf
+    └── meshes/
+        ├── Base_1.stl
+        ├── finger1_1.stl
+        ├── finger2_1.stl
+        ├── jaw2_1.stl
+        ├── jaw3_1.stl
+        ├── jaw4_1.stl
+        ├── jaw5_1.stl
+        ├── jaw6_1.stl
+        └── jawpart1_1.stl
 ```
-
-## URDF note
-
-`base_fixed.urdf` references STL meshes under `robot/meshes/`. The mesh binaries are not included in this initial commit because the available project files did not contain the STL files. Add the exported Fusion 360 STL files using the exact names referenced by the URDF to restore the complete visual/collision model.
 
 ## Workflow
 
